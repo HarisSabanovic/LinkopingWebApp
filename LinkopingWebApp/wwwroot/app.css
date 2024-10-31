@@ -1,0 +1,83 @@
+html, body {
+    font-family: 'Arial', sans-serif;
+    background-color: #101820;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #2F3C7E;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center; 
+}
+
+.type-location {
+    display:grid;
+    grid-template-columns: 50% 50%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white; 
+}
+
+select, input[type="number"], button {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+    transition: border-color 0.3s;
+}
+
+    select:focus, input[type="number"]:focus {
+        border-color: #4a90e2;
+        outline: none; 
+    }
+
+button {
+    background-color: #4a90e2; /* Primary button color */
+    color: white; /* Text color for the button */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for the button */
+    font-size: 18px; /* Larger font for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+    button:hover {
+        background-color: #357ab8; /* Darken button on hover */
+    }
+
+    button:active {
+        background-color: #2d5e94; /* Even darker on active */
+    }
+    color: red;
+}
+
+.form-container {
+    width: 60%;
+    margin-inline: auto;
+}
+
+label{
+    display: block;
+}
+
+input {
+    width: 300px;
+}
+
+select {
+    width: 300px;
+}

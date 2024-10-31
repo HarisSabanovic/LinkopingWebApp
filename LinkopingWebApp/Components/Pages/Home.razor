@@ -1,0 +1,84 @@
+﻿@page "/"
+
+@using LinkopingWebApp
+
+<PageTitle>Home</PageTitle>
+
+<h1>Välkommen till BostadsPriser i Linköping!</h1>
+<p>Letar du efter en pålitlig uppskattning av vad din lägenhet eller ditt hus kan kosta i Linköping? Vi erbjuder en användarvänlig plattform som använder avancerade algoritmer för att analysera marknadsdata och ge dig en exakt förutsägelse av bostadspriser. Oavsett om du planerar att sälja, köpa eller bara vill veta värdet på din fastighet, är vår tjänst här för att hjälpa dig. Fyll i dina uppgifter nedan och få en snabb och korrekt värdering av din bostad!</p>
+
+<div class="form-container">
+    <EditForm Model="@inputModel" OnValidSubmit="@PredictPrice" OnInvalidSubmit="invalidFunction" FormName="MLmarket">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="type-location">
+            <label for="type">Typ av Bostad</label>
+            <InputSelect id="type" @bind-Value="inputModel.Type" TValue="string">
+                <option value="Apartment">Lägenhet</option>
+                <option value="House">Hus</option>
+            </InputSelect>
+
+            <label for="partOfLinkoping">Del av Linköping</label>
+            <InputSelect id="partOfLinkoping" @bind-Value="inputModel.Part_of_Linkoping" TValue="string">
+                <option value="Berga">Berga</option>
+                <option value="Centralt">Centralt</option>
+                <option value="Ekholmen">Ekholmen</option>
+                <option value="Ekkallan">Ekkällan</option>
+                <option value="Garnisonen">Garnisonen</option>
+                <option value="Johannelund">Johannelund</option>
+                <option value="Skaggetorp">Skäggetorp</option>
+                <option value="Tannefors">Tannefors</option>
+                <option value="Valla">Valla</option>
+                <option value="Vallastaden">Vallastaden</option>
+                <option value="Vasastaden">Vasastaden</option>
+                <option value="Vidingsjo">Vidingsjö</option>
+            </InputSelect>
+        </div>
+
+        <label for="yearBuilt">År Byggt</label>
+        <InputNumber id="yearBuilt" @bind-Value="inputModel.Year_Built" TValue="float" min="1900" max="2024" />
+
+        <label for="rooms">Antal Rum</label>
+        <InputNumber id="rooms" @bind-Value="inputModel.Rooms" TValue="float" min="1" />
+
+        <label for="livingArea">Boarea (m²)</label>
+        <InputNumber id="livingArea" @bind-Value="inputModel.Living_Area" TValue="float" min="1" />
+
+        <label for="landArea">Tomtarea (m²)</label>
+        <InputNumber id="landArea" @bind-Value="inputModel.Land_Area" TValue="float"  required />
+
+        <button type="submit">Räkna ut</button>
+    </EditForm>
+
+    <p>Typ: @inputModel.Type</p>
+    <p>Del av Linköping: @inputModel.Part_of_Linkoping</p>
+    <p>Byggår: @inputModel.Year_Built</p>
+    <p>Antal Rum: @inputModel.Rooms</p>
+    <p>Boarea: @inputModel.Living_Area</p>
+    <p>Tomtarea: @inputModel.Land_Area</p>
+    <p>Priset är: @priceResult</p>
+</div>
+
+@code {
+    private MLModel.ModelInput inputModel = new MLModel.ModelInput();
+    private float priceResult;
+
+    private void PredictPrice()
+    {
+        Console.WriteLine($"Type: {inputModel.Type}");
+        Console.WriteLine($"Part of Linkoping: {inputModel.Part_of_Linkoping}");
+        Console.WriteLine($"Year Built: {inputModel.Year_Built}");
+        Console.WriteLine($"Rooms: {inputModel.Rooms}");
+        Console.WriteLine($"Living Area: {inputModel.Living_Area}");
+        Console.WriteLine($"Land Area: {inputModel.Land_Area}");
+
+        var result = MLModel.Predict(inputModel);
+        priceResult = result.Score;
+    }
+
+    private void invalidFunction()
+    {
+        Console.WriteLine("Invalid form");
+    }
+}

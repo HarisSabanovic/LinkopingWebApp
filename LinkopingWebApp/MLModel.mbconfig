@@ -1,0 +1,422 @@
+﻿{
+  "Scenario": "Regression",
+  "DataSource": {
+    "Version": 3,
+    "EscapeCharacter": "\"",
+    "ReadMultiLines": false,
+    "KeepDiacritics": false,
+    "KeepPunctuations": false,
+    "AllowQuoting": false,
+    "Type": "TabularFile",
+    "FilePath": "C:\\Users\\haris\\source\\repos\\LinkopingWebApp\\LinkopingWebApp\\dataset.txt",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "Type",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Location",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Part of Linkoping",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Year Built",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Rooms",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Living Area",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Land Area",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "price",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.95845296063441476,
+        "RuntimeInSeconds": 0.699,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ],
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "InputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping",
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.18106816635136677,
+            "NumberOfTrees": 826,
+            "SubsampleFraction": 0.68874357314797074,
+            "MaximumBinCountPerFeature": 190,
+            "FeatureFraction": 0.888477988358539,
+            "L1Regularization": 2.1341922316511344E-10,
+            "L2Regularization": 0.9671674617786814,
+            "LabelColumnName": "price",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeRegression",
+        "Score": 0.95840222823536381,
+        "RuntimeInSeconds": 6.423,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ],
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "InputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping",
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 18,
+            "NumberOfTrees": 14639,
+            "MaximumBinCountPerFeature": 137,
+            "FeatureFraction": 0.65336280742835451,
+            "LearningRate": 0.008747070861902493,
+            "LabelColumnName": "price",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.95818566268205208,
+        "RuntimeInSeconds": 0.694,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ],
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "InputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping",
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.18112732997766995,
+            "NumberOfTrees": 826,
+            "SubsampleFraction": 0.68924939905085159,
+            "MaximumBinCountPerFeature": 189,
+            "FeatureFraction": 0.88850412641255294,
+            "L1Regularization": 2.1329826047238442E-10,
+            "L2Regularization": 0.9669270570294356,
+            "LabelColumnName": "price",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.95816837041640979,
+        "RuntimeInSeconds": 0.998,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ],
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "InputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping",
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.1158659505023007,
+            "NumberOfTrees": 1288,
+            "SubsampleFraction": 0.753285918910908,
+            "MaximumBinCountPerFeature": 241,
+            "FeatureFraction": 0.998625346822654,
+            "L1Regularization": 6.590025537592537E-10,
+            "L2Regularization": 0.090614843117133692,
+            "LabelColumnName": "price",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.95800004865685329,
+        "RuntimeInSeconds": 0.979,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ],
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "InputColumnNames": [
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Type",
+              "Location",
+              "Part of Linkoping",
+              "Year Built",
+              "Rooms",
+              "Living Area",
+              "Land Area"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.11634477934987617,
+            "NumberOfTrees": 1285,
+            "SubsampleFraction": 0.75300608896834065,
+            "MaximumBinCountPerFeature": 241,
+            "FeatureFraction": 0.99822436633496392,
+            "L1Regularization": 6.593629370076379E-10,
+            "L2Regularization": 0.090857982649615143,
+            "LabelColumnName": "price",
+            "FeatureColumnName": "Features"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "OneHotEncoding",
+      "e1": "ReplaceMissingValues",
+      "e2": "Concatenate",
+      "e3": "FastTreeRegression",
+      "e4": "FastForestRegression",
+      "e5": "LightGbmRegression",
+      "e6": "LbfgsPoissonRegressionRegression",
+      "e7": "SdcaRegression"
+    },
+    "Schema": "e0 * e1 * e2 * (e3 + e4 + e5 + e6 + e7)",
+    "MetricName": "RSquared",
+    "ModelFilePath": "C:\\Users\\haris\\source\\repos\\LinkopingWebApp\\LinkopingWebApp\\MLModel.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 5,
+  "TrainingOption": {
+    "Version": 2,
+    "Subsampling": false,
+    "Type": "RegressionTrainingOption",
+    "TrainingTime": 300,
+    "LabelColumn": "price",
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}
